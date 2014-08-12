@@ -1,25 +1,38 @@
-<?php
-$id = uniqid();
-$id = "gapper-auth-example-{$id}";
-?>
-<form id="<?=H($id)?>" method="POST" action="ajax/gapperauthexample/login">
-    <input type="text" name="username"/>
-    <input type="password" name="password"/>
-    <input type="button" value="登录" />
-</form>
+<style>
+.gapper-client-dialog .modal-dialog {
+    width: 325px;
+}
+.gapper-client-dialot .modal-content {
+    background: #f9f9f9;
+}
+.gapper-client-dialog .dl-horizontal dt {
+    width: 100px;
+    text-align: center;
+}
+.gapper-client-dialog .dl-horizontal dd {
+    margin-left: 115px;
+}
+.gapper-client-dialog .bootbox-close-button {
+    margin-top: -33px!important;
+    margin-right: -33px!important;
+    background: #000;
+    color: #fff;
+    padding: 0 6px 4px;
+    border-radius: 15px;
+}
+.gapper-auth-login-form .gapper-auth-login-form-li {
+    padding: 5px 0;
+}
+</style>
+<form class="gapper-auth-login-form" method="POST" action="ajax/gapperauthexample/login"><dl class="dl-horizontal">
+    <dt>
+        <img src="<?=H($info->icon)?>" />
+        <div><?=H($info->name)?></div>
+    </dt>
+    <dd>
+        <div class="gapper-auth-login-form-li"><input type="text" name="username" placeholder="Email" /></div>
+        <div class="gapper-auth-login-form-li"><input type="password" name="password" placeholder="Password" /></div>
+        <div class="gapper-auth-login-form-li"><input class="btn btn-primary" type="submit" /></div>
+    </dd>
+</dl></form>
 
-<script>
-require(['jquery'], function($) {
-    var id = <?=J($id)?>;
-    var $form = $('#'+id);
-    $form.on('click', 'input[type=button]', function() {
-        var url = $form.attr('action');
-        var data = $form.serializeArray();
-        $.post(url, data, function(result) {
-            if (true===result) {
-                window.location.reload();
-            }
-        });
-    });
-});
-</script>

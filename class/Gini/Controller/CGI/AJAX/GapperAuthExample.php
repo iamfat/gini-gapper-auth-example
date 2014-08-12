@@ -52,11 +52,14 @@ class GapperAuthExample extends \Gini\Controller\CGI
             return $this->_showJSON(true);
         }
 
-        return $this->_showJSON(false);
+        return $this->_showJSON(T('Login failed! Please try again.'));
     }
 
     public function actionGetForm()
     {
-        return $this->_showHTML('gapperauth/example/login');
+        $info = (object)\Gini\Config::get('gapperauth.example');
+        return $this->_showHTML('gapperauth/example/login', [
+            'info'=> $info
+        ]);
     }
 }
