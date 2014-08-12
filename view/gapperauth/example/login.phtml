@@ -1,0 +1,25 @@
+<?php
+$id = uniqid();
+$id = "gapper-auth-example-{$id}";
+?>
+<form id="<?=H($id)?>" method="POST" action="ajax/gapperauthexample/login">
+    <input type="text" name="username"/>
+    <input type="password" name="password"/>
+    <input type="button" value="登录" />
+</form>
+
+<script>
+require(['jquery'], function($) {
+    var id = <?=J($id)?>;
+    var $form = $('#'+id);
+    $form.on('click', 'input[type=button]', function() {
+        var url = $form.attr('action');
+        var data = $form.serializeArray();
+        $.post(url, data, function(result) {
+            if (true===result) {
+                window.location.reload();
+            }
+        });
+    });
+});
+</script>
