@@ -48,7 +48,7 @@ class GapperAuthExample extends \Gini\Controller\CGI
         $bool = $this->_getRPC()->user->verify($username, $password);
 
         if ($bool) {
-            \Gini\Auth::login(\Gini\Auth::normalize($username));
+            \Gini\Auth::login(\Gini\Auth::makeUserName($username));
             return $this->_showJSON(true);
         }
 
