@@ -1,38 +1,15 @@
-<style>
-.gapper-client-dialog .modal-dialog {
-    width: 325px;
-}
-.gapper-client-dialot .modal-content {
-    background: #f9f9f9;
-}
-.gapper-client-dialog .dl-horizontal dt {
-    width: 100px;
-    text-align: center;
-}
-.gapper-client-dialog .dl-horizontal dd {
-    margin-left: 115px;
-}
-.gapper-client-dialog .bootbox-close-button {
-    margin-top: -33px!important;
-    margin-right: -33px!important;
-    background: #000;
-    color: #fff;
-    padding: 0 6px 4px;
-    border-radius: 15px;
-}
-.gapper-auth-login-form .gapper-auth-login-form-li {
-    padding: 5px 0;
-}
-</style>
-<form class="gapper-auth-login-form" method="POST" action="ajax/gapperauthexample/login"><dl class="dl-horizontal">
-    <dt>
-        <img src="<?=H($info->icon)?>" />
-        <div><?=H($info->name)?></div>
+<div class="modal-header"><?=H(T('LOGIN'))?></div>
+<form class="modal-body form gapper-auth-login-form" method="POST" action="ajax/gapperauthexample/login"><dl class="dl-horizontal">
+    <dt class="text-center">
+        <div class="app-icon">
+            <div class="text-center app-icon-image"><img src="<?=H($info->icon)?>" /></div>
+            <div class="text-center app-icon-title"><?=H($info->name)?></div>
+        </div>
     </dt>
     <dd>
-        <div class="gapper-auth-login-form-li"><input type="text" name="username" placeholder="Email" /></div>
-        <div class="gapper-auth-login-form-li"><input type="password" name="password" placeholder="Password" /></div>
-        <div class="gapper-auth-login-form-li"><input class="btn btn-primary" type="submit" /></div>
+        <div class="gapper-auth-login-form-li form-group"><input class="form-control" type="text" name="username" placeholder="Email" /></div>
+        <div class="gapper-auth-login-form-li form-group"><input class="form-control" type="password" name="password" placeholder="Password" /></div>
+        <div class="gapper-auth-login-form-li form-group"><input class="form-control btn btn-primary" type="submit" /></div>
     </dd>
 </dl></form>
 
