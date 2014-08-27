@@ -1,0 +1,6 @@
+---
+auth:
+    example: 
+        icon: http://gravatar.com/avatar/19e1f4e7add200a14d93415f977426ee.jpg?s=64&_=1407383781
+        name: Example
+...

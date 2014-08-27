@@ -1,8 +1,8 @@
 <?php
 
-namespace Gini\Controller\CGI\AJAX;
+namespace Gini\Controller\CGI\AJAX\Gapper\Auth;
 
-class GapperAuthExample extends \Gini\Controller\CGI
+class Example extends \Gini\Controller\CGI
 {
     private static $_RPC = [];
     private function _getRPC($type='gapper')
@@ -38,7 +38,7 @@ class GapperAuthExample extends \Gini\Controller\CGI
 
     public function actionLogin()
     {
-        if (\Gini\Auth::isLoggedIn()) {
+        if (\Gini\Gapper\Client::getLoginStep()===\Gini\Gapper\Client::STEP_DONE) {
             return $this->_showJSON(true);
         }
 
@@ -48,7 +48,7 @@ class GapperAuthExample extends \Gini\Controller\CGI
         $bool = $this->_getRPC()->user->verify($username, $password);
 
         if ($bool) {
-            \Gini\Auth::login(\Gini\Auth::makeUserName($username));
+            \Gini\Gapper\Client::loginByUserName($username);
             return $this->_showJSON(true);
         }
 
@@ -57,9 +57,12 @@ class GapperAuthExample extends \Gini\Controller\CGI
 
     public function actionGetForm()
     {
-        $info = (object)\Gini\Config::get('gapperauth.example');
-        return $this->_showHTML('gapperauth/example/login', [
+        $infos = (array)\Gini\Config::get('gapper.auth');
+        $info = (object)$infos['example'];
+
+        return $this->_showHTML('gapper/auth/example/login', [
             'info'=> $info
         ]);
     }
 }
+
