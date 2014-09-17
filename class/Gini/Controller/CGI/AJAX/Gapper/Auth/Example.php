@@ -49,7 +49,10 @@ class Example extends \Gini\Controller\CGI
 
         if ($bool) {
             \Gini\Gapper\Client::loginByUserName($username);
-            return $this->_showJSON(true);
+            $result = \Gini\Gapper\Client::loginByUserName($username);
+            if ($result) {
+                return $this->_showJSON(true);
+            }
         }
 
         return $this->_showJSON(T('Login failed! Please try again.'));
