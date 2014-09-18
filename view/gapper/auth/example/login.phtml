@@ -7,8 +7,14 @@
         </div>
     </dt>
     <dd>
-        <div class="gapper-auth-login-form-li form-group"><input class="form-control" type="text" name="username" placeholder="Email" /></div>
-        <div class="gapper-auth-login-form-li form-group"><input class="form-control" type="password" name="password" placeholder="Password" /></div>
+        <div class="gapper-auth-login-form-li form-group">
+            <div class="gapper-auth-login-form-placeholder" style="display:none; display/*\**/:block\9;"><?=H(T('Email:'))?></div>
+            <input class="form-control" type="text" name="username" placeholder="<?=H(T('Email'))?>" />
+        </div>
+        <div class="gapper-auth-login-form-li form-group">
+            <div class="gapper-auth-login-form-placeholder" style="display:none; display/*\**/:block\9;"><?=H(T('Password:'))?></div>
+            <input class="form-control" type="password" name="password" placeholder="<?=H(T('Password'))?>" />
+        </div>
         <div class="gapper-auth-login-form-li form-group"><input class="form-control btn btn-primary" type="submit" /></div>
     </dd>
 </dl></form>
